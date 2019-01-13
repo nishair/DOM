@@ -1,0 +1,15 @@
+from xml.dom import minidom
+#Read the file
+doc = minidom.parse("staff.xml")
+#Get Elements by tag name 
+name = doc.getElementsByTagName("name")[0]
+#First child's data
+print(name.firstChild.data)
+#Getting all Attributes from DOM
+staffs = doc.getElementsByTagName("staff")
+for staff in staffs:
+	sid = staff.getAttribute("id")
+	#Get nickname, salary by using firstChild
+	nickname = staff.getElementsByTagName("nickname")[0]
+	salary = staff.getElementsByTagName("salary")[0]
+	print("id:%s, nickname:%s,salary:%s" % (sid,nickname.firstChild.data,salary.firstChild.data))
